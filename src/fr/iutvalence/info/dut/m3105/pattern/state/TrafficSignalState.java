@@ -1,7 +1,7 @@
 package fr.iutvalence.info.dut.m3105.pattern.state;
 
 
-public abstract class TrafficSignalState
+public abstract class TrafficSignalState implements TrafficSignalPressButtonInterface
 {
 	protected final TrafficSignalContext context;
 	protected int durationInSeconds;

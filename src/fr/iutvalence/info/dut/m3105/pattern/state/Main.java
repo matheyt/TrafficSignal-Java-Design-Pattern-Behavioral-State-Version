@@ -10,6 +10,7 @@ public class Main
 		Random rng = new Random();
 		
 		TrafficSignal trafficSignal = new TrafficSignal();
+		trafficSignal.registerObserver(new TrafficSignalNotifyObserver());
 		trafficSignal.start();
 		
 		while (true)

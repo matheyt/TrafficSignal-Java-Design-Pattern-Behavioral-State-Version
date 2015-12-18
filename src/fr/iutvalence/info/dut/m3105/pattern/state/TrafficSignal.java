@@ -1,10 +1,13 @@
 package fr.iutvalence.info.dut.m3105.pattern.state;
 
+import java.util.List;
+
 
 public class TrafficSignal extends Thread implements TrafficSignalContext, TrafficSignalUserInterface
 {
 	private TrafficSignalState state;
-
+	private List<TrafficSignalNotifyInterface> observers;
+	
 	@Override
 	public void setTrafficSignalState(TrafficSignalState state)
 	{
@@ -32,6 +35,20 @@ public class TrafficSignal extends Thread implements TrafficSignalContext, Traff
 			{
 				break;
 			}
+		}
+	}
+
+	public void registerObserver(TrafficSignalNotifyObserver trafficSignalNotifyObserver) {
+		observers.add(trafficSignalNotifyObserver);
+	}
+	
+	public void unregisterObserver(TrafficSignalNotifyObserver trafficSignalNotifyObserver) {
+		observers.remove(trafficSignalNotifyObserver);
+	}
+	
+	private void notifyStateChange(TrafficSignalStateName name) {
+		for (TrafficSignalNotifyInterface observer : observers) {
+			observer.notifySignalState(name);
 		}
 	}
 	

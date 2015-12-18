@@ -25,4 +25,9 @@ public class TrafficSignalGreenState extends TrafficSignalState
 		if (this.durationInSeconds == 0)
 			this.context.setTrafficSignalState(new TrafficSignalOrangeState(this.context));
 	}
+
+	@Override
+	public void pressButton() {
+		// TODO complete this method
+	}
 }
